@@ -1,1 +1,1 @@
-web: gunicorn httpbin:app -k gevent
+web: python -m gunicorn.app.wsgiapp -c gunicorn-prod.conf.py httpbin:app
