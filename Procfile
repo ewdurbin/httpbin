@@ -1,1 +1,1 @@
-web: env SENTINEL_ENV=buzz python -m gunicorn.app.wsgiapp -c gunicorn-prod.conf.py httpbin:app
+web: env SENTINEL_ENV=buzz OTHER=fizz python -m gunicorn.app.wsgiapp -c gunicorn-prod.conf.py httpbin:app
