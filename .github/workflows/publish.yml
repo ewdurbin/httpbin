@@ -72,22 +72,19 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build Docker Images
+      - name: Build and Push Docker Images
+        if: startsWith(github.ref, 'refs/tags/release-')
         uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          push: false
+          push: true
           build-args: |
             APP_VERSION=${{ env.APP_VERSION }}
             APP_DESC=${{ env.APP_DESC }}
           tags: |
             ghcr.io/${{ github.repository }}:${{ env.APP_VERSION }}
             ghcr.io/${{ github.repository }}:latest
-      - name: Push Docker Image
-        if: startsWith(github.ref, 'refs/tags/release-')
-        run: |
-          docker push "ghcr.io/${GITHUB_REPOSITORY}:${APP_VERSION}"
   pypi-publish:
     needs: [unit-tests]
     if: startsWith(github.ref, 'refs/tags/release-')
