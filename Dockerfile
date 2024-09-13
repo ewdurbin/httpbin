@@ -12,5 +12,6 @@ RUN set -x \
 
 WORKDIR /httpbin
 
+RUN exit 1
 ADD . /httpbin
 RUN pip3 install --no-cache-dir gunicorn /httpbin
