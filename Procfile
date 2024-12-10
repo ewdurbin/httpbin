@@ -1,1 +1,1 @@
-web: python -m gunicorn.app.wsgiapp -c gunicorn-prod.conf.py $GUNICORN_ARGS httpbin:app
+web: python -m gunicorn.app.wsgiapp -c gunicorn-prod.conf.py -w ${GUNICORN_CONCURRENCY:-1} httpbin:app
