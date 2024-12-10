@@ -1,1 +1,1 @@
-web: python -m gunicorn.app.wsgiapp -c gunicorn-prod.conf.py httpbin:app
+web: python -m gunicorn.app.wsgiapp -c gunicorn-prod.conf.py $GUNICORN_ARGS httpbin:app
