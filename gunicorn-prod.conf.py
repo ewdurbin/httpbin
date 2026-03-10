@@ -5,7 +5,7 @@ max_requests = 2048
 max_requests_jitter = 128
 
 worker_connections = 1000
-timeout = 60
+timeout = 305
 keepalive = 2
 
 errorlog = "-"
