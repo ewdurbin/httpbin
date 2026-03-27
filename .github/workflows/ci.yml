@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Pass
-      run: echo Success!
+      run: sleep 30 && echo Success!
